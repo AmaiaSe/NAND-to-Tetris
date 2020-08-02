@@ -43,21 +43,41 @@ CHIP CPU {
     //A-instruction -> 0 = instruction[15] = @num  ¿
     //C-instruction -> 1 = instruction[15] = D=... ¿
 
+    //Diferenciar A de C:
+    Mux16(a=false, b=instruction, sel=instruction[15], 
+        out[0]=j3,
+        out[1]=j2,
+        out[2]=j1,
+        out[3]=instr3,
+        out[4]=instr4,
+        out[5]=instr5,
+        out[6]=instr6,
+        out[7]=instr7,
+        out[8]=instr8,
+        out[9]=instr9,
+        out[10]=instr10,
+        out[11]=instr11,
+        out[12]=instr12,
+        out[13]=instr13,
+        out[14]=instr14,
+        out[15]=instr15
+    );
+
     Mux16(a=instruction, b=outALU, sel=instruction[15], out=outMux1);
     //si es A-instruction siempre llenamos AReg, sino depende de [5]
     Mux(a=true, b=instruction[5], sel=instruction[15], out=loadA);
     ARegister(in=outMux1, load=loadA, out=outA, out[0..14]=addressM);
 
-    Mux16(a=outA, b=inM, sel=instruction[12], out=outMux2); //instr[12]
-    DRegister(in=outALU, load=instruction[4], out=outD);
+    Mux16(a=outA, b=inM, sel=instr12, out=outMux2); //instr[12]
+    DRegister(in=outALU, load=instr4, out=outD);
     ALU(
         x=outD, y=outMux2, 
-        zx=instruction[11], 
-        nx=instruction[10], 
-        zy=instruction[9], 
-        ny=instruction[8], 
-        f=instruction[7], 
-        no=instruction[6], 
+        zx=instr11, 
+        nx=instr10, 
+        zy=instr9, 
+        ny=instr8, 
+        f=instr7, 
+        no=instr6, 
         out=outALU, out=outM,
         zr=zr, ng=ng
     );
@@ -65,5 +85,27 @@ CHIP CPU {
     //Porque si no es C-instruction no tengo que writear?
     And(a=instruction[3], b=instruction[15], out=writeM); 
 
-    PC(in=outA, load=zr, inc=ng, reset=reset, out[0..14]=pc);//zr y ng seguramente mal
+    Not(in=zr, out=Nzr); //Not 0
+    Not(in=ng, out=ps);  //Positivo
+
+    And(a=ps, b=Nzr, out=psANDNzr); // >0
+    Or(a=ps, b=zr, out=psORzr);     // >=0
+    And(a=ng, b=Nzr, out=ngANDNzr); // <0
+    Or(a=ng, b=zr, out=ngORzr);     // <=0
+
+    Mux8Way(
+        a=false,
+        b=psANDNzr, 
+        c=zr, 
+        d=psORzr, 
+        e=ngANDNzr, 
+        f=Nzr, 
+        g=ngORzr, 
+        h=true, 
+        sel[0]=j3, sel[1]=j2, sel[2]=j1, out=loadPC
+    );
+
+    Not(in=loadPC, out=incPC);
+
+    PC(in=outA, load=loadPC, inc=incPC, reset=reset, out[0..14]=pc);
 }
