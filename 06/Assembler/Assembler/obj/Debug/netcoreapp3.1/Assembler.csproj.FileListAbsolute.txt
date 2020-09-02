@@ -1,0 +1,11 @@
+C:\Users\Amaia\source\repos\Assembler\Assembler\bin\Debug\netcoreapp3.1\Assembler.exe
+C:\Users\Amaia\source\repos\Assembler\Assembler\bin\Debug\netcoreapp3.1\Assembler.deps.json
+C:\Users\Amaia\source\repos\Assembler\Assembler\bin\Debug\netcoreapp3.1\Assembler.runtimeconfig.json
+C:\Users\Amaia\source\repos\Assembler\Assembler\bin\Debug\netcoreapp3.1\Assembler.runtimeconfig.dev.json
+C:\Users\Amaia\source\repos\Assembler\Assembler\bin\Debug\netcoreapp3.1\Assembler.dll
+C:\Users\Amaia\source\repos\Assembler\Assembler\bin\Debug\netcoreapp3.1\Assembler.pdb
+C:\Users\Amaia\source\repos\Assembler\Assembler\obj\Debug\netcoreapp3.1\Assembler.csprojAssemblyReference.cache
+C:\Users\Amaia\source\repos\Assembler\Assembler\obj\Debug\netcoreapp3.1\Assembler.AssemblyInfoInputs.cache
+C:\Users\Amaia\source\repos\Assembler\Assembler\obj\Debug\netcoreapp3.1\Assembler.AssemblyInfo.cs
+C:\Users\Amaia\source\repos\Assembler\Assembler\obj\Debug\netcoreapp3.1\Assembler.dll
+C:\Users\Amaia\source\repos\Assembler\Assembler\obj\Debug\netcoreapp3.1\Assembler.pdb
