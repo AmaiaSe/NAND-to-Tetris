@@ -66,8 +66,6 @@ namespace Assembler
             using (System.IO.StreamWriter file =
             new System.IO.StreamWriter(@"C:\Users\Amaia\Desktop\FromNand2Tetris\nand2tetris\projects\06\Add.hack", true))
             {
-                //file.WriteLine("Fourth line");
-
                 foreach (string linea in lista)
                 {
                     //A-INSTRUCTION
@@ -80,6 +78,9 @@ namespace Assembler
                             //si la location es un num DECIMAL -> lo convertimos A BINARIO
                             int deci = Convert.ToInt32(location);
                             AInstr = Convert.ToString(deci, 2).PadLeft(16, '0');
+                            //PROBLEM: Creo que es aquí donde falla el programa Pong.asm -> hay labels con nombres como "mathf.sqrt(this)" o del estilo
+                            //que creo que entran a este try sin problema. Como son labels puestas para romper el programa he usado PongL.asm
+                            //directamente. El problema está aquí o al llenar la tabla de labels.
                         }
                         catch (Exception a)
                         {
@@ -97,10 +98,7 @@ namespace Assembler
                                 Tabla.Add(location, indTabla);
                                 AInstr = Convert.ToString(indTabla, 2).PadLeft(16, '0');
                             }
-                            //PROBLEMA: cuando busca en la tabla mira desde el 16 en adelante, podriamos ahorrarnos el while si le pasamos el valor del anterior key guardado en la tabla
-                            //creo que lo he solucionado, btw ya no llamamos a un metodo que lo haga, asi no necesitamos traer el index aqui
                         }
-                        //Console.WriteLine("A" + AInstr);
                         file.WriteLine(AInstr);
                     }
                     //C-INSTRUCTION
@@ -142,7 +140,6 @@ namespace Assembler
 
                             CInstr = CInstr + c + dest + j;
                         }
-                        //Console.WriteLine("C" + CInstr);
                         file.WriteLine(CInstr);
                     }
                 }

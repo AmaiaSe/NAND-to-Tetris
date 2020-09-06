@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Amaia\\source\\repos\\Assembler\\Assembler\\Assembler.csproj": {}
+    "C:\\Users\\Amaia\\Desktop\\FromNand2Tetris\\nand2tetris\\projects\\06\\Assembler\\Assembler\\Assembler.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Amaia\\source\\repos\\Assembler\\Assembler\\Assembler.csproj": {
+    "C:\\Users\\Amaia\\Desktop\\FromNand2Tetris\\nand2tetris\\projects\\06\\Assembler\\Assembler\\Assembler.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Amaia\\source\\repos\\Assembler\\Assembler\\Assembler.csproj",
+        "projectUniqueName": "C:\\Users\\Amaia\\Desktop\\FromNand2Tetris\\nand2tetris\\projects\\06\\Assembler\\Assembler\\Assembler.csproj",
         "projectName": "Assembler",
-        "projectPath": "C:\\Users\\Amaia\\source\\repos\\Assembler\\Assembler\\Assembler.csproj",
+        "projectPath": "C:\\Users\\Amaia\\Desktop\\FromNand2Tetris\\nand2tetris\\projects\\06\\Assembler\\Assembler\\Assembler.csproj",
         "packagesPath": "C:\\Users\\Amaia\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Amaia\\source\\repos\\Assembler\\Assembler\\obj\\",
+        "outputPath": "C:\\Users\\Amaia\\Desktop\\FromNand2Tetris\\nand2tetris\\projects\\06\\Assembler\\Assembler\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Amaia\\AppData\\Roaming\\NuGet\\NuGet.Config",
