@@ -43,24 +43,27 @@ CHIP CPU {
     //A-instruction -> 0 = instruction[15] = @num  ¿
     //C-instruction -> 1 = instruction[15] = D=... ¿
 
+    //SYMBOLIC SYNTAX:  dest = comp ; jump
+    //BINARY SYNTAX:    op 1 1 a c1 c2 c3 c4 c5 c6 d1 d2 d3 j1 j2 j3
+
     //Diferenciar A de C:
     Mux16(a=false, b=instruction, sel=instruction[15], 
         out[0]=j3,
         out[1]=j2,
         out[2]=j1,
-        out[3]=instr3,
-        out[4]=instr4,
-        out[5]=instr5,
-        out[6]=instr6,
-        out[7]=instr7,
-        out[8]=instr8,
-        out[9]=instr9,
-        out[10]=instr10,
-        out[11]=instr11,
-        out[12]=instr12,
-        out[13]=instr13,
-        out[14]=instr14,
-        out[15]=instr15
+        out[3]=d3,
+        out[4]=d2,
+        out[5]=d1,
+        out[6]=c6,
+        out[7]=c5,
+        out[8]=c4,
+        out[9]=c3,
+        out[10]=c2,
+        out[11]=c1,
+        out[12]=a,
+        out[13]=instr13, //always 1
+        out[14]=instr14, //always 1
+        out[15]=op
     );
 
     Mux16(a=instruction, b=outALU, sel=instruction[15], out=outMux1);
@@ -68,16 +71,16 @@ CHIP CPU {
     Mux(a=true, b=instruction[5], sel=instruction[15], out=loadA);
     ARegister(in=outMux1, load=loadA, out=outA, out[0..14]=addressM);
 
-    Mux16(a=outA, b=inM, sel=instr12, out=outMux2); //instr[12]
-    DRegister(in=outALU, load=instr4, out=outD);
+    Mux16(a=outA, b=inM, sel=a, out=outMux2); //instr[12]
+    DRegister(in=outALU, load=d2, out=outD);
     ALU(
         x=outD, y=outMux2, 
-        zx=instr11, 
-        nx=instr10, 
-        zy=instr9, 
-        ny=instr8, 
-        f=instr7, 
-        no=instr6, 
+        zx=c1, 
+        nx=c2, 
+        zy=c3, 
+        ny=c4, 
+        f=c5, 
+        no=c6, 
         out=outALU, out=outM,
         zr=zr, ng=ng
     );
