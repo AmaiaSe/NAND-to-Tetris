@@ -8,14 +8,18 @@
 
 // Put your code here.
 
+//REPASO
+//Inicializar R2 = 0
 @0
 D=A
 @R2
 M=D
 
+//Inicializar i = 16 y M[16] = 0
 @i
 M=0
 
+//Los valores a multiplicar en R0 y R1 están ya metidos a mano
 (LOOP)
 @i
 D=M

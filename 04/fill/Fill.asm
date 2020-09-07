@@ -13,7 +13,6 @@
 
 // Put your code here.
 
-//en vez de usar addr podré usar solo SCREEN no?
 //PROBAR
 
 @SCREEN
@@ -42,7 +41,7 @@ D=M-D
 @LOOP
 D;JGE
 @addr
-M=M+1
+M=M+1 //en la última vuelta -> M[addr]=24575
 @BLACK
 0;JMP
 
@@ -52,7 +51,7 @@ A=M
 M=0
 @16384
 D=A
-@addr
+@addr //en la primera vuelta -> M[addr]=24575
 D=D-M
 @LOOP
 D;JGE
