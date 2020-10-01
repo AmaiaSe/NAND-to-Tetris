@@ -7,11 +7,11 @@ namespace Assembler
     {
         static void Main(string[] args)
         {
-            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\Amaia\Desktop\FromNand2Tetris\nand2tetris\projects\06\add\Add.asm");
+            //string[] lines = System.IO.File.ReadAllLines(@"C:\Users\Amaia\Desktop\FromNand2Tetris\nand2tetris\projects\06\add\Add.asm");
             //string[] lines = System.IO.File.ReadAllLines(@"C:\Users\Amaia\Desktop\FromNand2Tetris\nand2tetris\projects\06\max\Max.asm");
             //string[] lines = System.IO.File.ReadAllLines(@"C:\Users\Amaia\Desktop\FromNand2Tetris\nand2tetris\projects\06\max\MaxL.asm");
             //string[] lines = System.IO.File.ReadAllLines(@"C:\Users\Amaia\Desktop\FromNand2Tetris\nand2tetris\projects\06\pong\Pong.asm");
-            //string[] lines = System.IO.File.ReadAllLines(@"C:\Users\Amaia\Desktop\FromNand2Tetris\nand2tetris\projects\06\pong\PongL.asm");
+            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\Amaia\Desktop\FromNand2Tetris\nand2tetris\projects\06\pong\PongL.asm");
             //string[] lines = System.IO.File.ReadAllLines(@"C:\Users\Amaia\Desktop\FromNand2Tetris\nand2tetris\projects\06\rect\Rect.asm");
             //string[] lines = System.IO.File.ReadAllLines(@"C:\Users\Amaia\Desktop\FromNand2Tetris\nand2tetris\projects\06\rect\RectL.asm");
 
@@ -73,7 +73,8 @@ namespace Assembler
                     {
                         string location = linea.Substring(1, linea.Length - 1);
                         string AInstr = "";
-                        try
+                        //try
+                        if(int.TryParse(location, out int output))
                         {
                             //si la location es un num DECIMAL -> lo convertimos A BINARIO
                             int deci = Convert.ToInt32(location);
@@ -82,7 +83,8 @@ namespace Assembler
                             //que creo que entran a este try sin problema. Como son labels puestas para romper el programa he usado PongL.asm
                             //directamente. El problema está aquí o al llenar la tabla de labels.
                         }
-                        catch (Exception a)
+                        //catch (Exception a)
+                        else
                         {
                             //si es un LABEL, buscarlo en la tabla, si no existe se añade                        
                             if (Tabla.ContainsKey(location)) //si está en la tabla -> get from tabla
