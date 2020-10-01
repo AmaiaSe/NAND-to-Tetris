@@ -73,17 +73,13 @@ namespace Assembler
                     {
                         string location = linea.Substring(1, linea.Length - 1);
                         string AInstr = "";
-                        //try
+                        
                         if(int.TryParse(location, out int output))
                         {
                             //si la location es un num DECIMAL -> lo convertimos A BINARIO
                             int deci = Convert.ToInt32(location);
                             AInstr = Convert.ToString(deci, 2).PadLeft(16, '0');
-                            //PROBLEM: Creo que es aquí donde falla el programa Pong.asm -> hay labels con nombres como "mathf.sqrt(this)" o del estilo
-                            //que creo que entran a este try sin problema. Como son labels puestas para romper el programa he usado PongL.asm
-                            //directamente. El problema está aquí o al llenar la tabla de labels.
                         }
-                        //catch (Exception a)
                         else
                         {
                             //si es un LABEL, buscarlo en la tabla, si no existe se añade                        
